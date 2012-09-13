@@ -1,0 +1,106 @@
+<script type="text/javascript">
+// ADD VIEWPORT META FOR RESPONSIVE LAYOUT
+    meta=document.createElement('meta');
+    meta.name='viewport';
+    meta.content='width=device-width, initial-scale=1.0';
+    document.getElementsByTagName('head')[0].appendChild(meta);
+// END META
+</script>
+<!--
+
+    M  M     Sean's Cargo Site (v3 2012)
+  NNNNNNNN   http://seanwittmeyer.com/
+    H  H     Custom HTML for the Kennedy-alt Cargo theme
+  NNNN NNN   Like what you see? Let's chat. 
+    W  W     sean[at]zilifone[dot]net
+
+-->
+<div class="cargo_link"><a href="http://www.zilifone.net/?fr=cargo" target="_blank">Zilifone</a> | <a href="http://seanwittmeyer.com/photos#/catch_ref/id=cargo" target="_blank">Photos</a> | <a href="https://mail.zilifone.net/" target="_blank">Mail</a> </div>
+<div id="hideme">
+    <div id="custom_headername" class="page_link"><a href="/" class="colordark">Sean Gordon Wittmeyer</a></div>
+    <div id="custom_headerroles" class="page_link"><a href="/">User Interface + Web + Product Design</a></div>
+    <div id="custom_blanka" class="page_link">&nbsp;</div>
+    <div id="custom_blankb" class="page_link">&nbsp;</div>
+    <h1 id="hero">Hi there! I'm Sean Wittmeyer, a designer who believes that we can make our world better through good design.</h1>
+    <div id="footercontent">
+        <div class="hrline"></div>
+        <div class="entry">
+            <div class="project_title">Thanks for dropping by!</div>
+            <div class="project_content">If you are interested in working with me on a project, feel free to get in touch. I work on most projects with my friends at our design firm Zilifone. Check them out at zilifone.net<br /><br />
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div id="custom_footer">
+        <div><span class="colordark">Sean Gordon Wittmeyer</span><br />User Interface + Web + Product Design</div>
+        <div><span class="colordark">Let's Connect</span><br />I can be found all over the interwebs. <a href="http://twitter.com/seanwittmeyer">Twitter</a>, <a href="http://dribbble.com/seanwittmeyer">Dribbble</a>, <a href="http://github.com/seanwittmeyer">GitHub</a>, <a href="http://cowbird.com/author/sean">Cowbird</a> and <a href="http://flickr.com/seanwittmeyer">Flickr</a><br /><br />You can also just take the direct approach and <a href="">contact me</a>.</div>
+        <div><span class="colordark">Colophon</span><br />This site is powered by <a href="http://cargocollective.com/">Cargo</a> and an occasional pastrami sandwich. I modified the Kennedy theme to match my design.</div>
+
+        <div class="clear"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+// BEGIN MOVE CUSTOM CONTENT 
+    $(document).ready(function() {  
+        $("#menu_2282444").before($("#custom_headername"));     
+        $("#menu_884548").before($("#custom_headerroles"));     
+        $("#menu_2285738").before($("#custom_blanka"));     
+        $("#menu_4063454").before($("#custom_blankb"));     
+        $("#p2285738").before($("#p2285731")).before(' &amp; ');
+        $("#content_container").before($("h1#hero"));     
+        $("#page_1,#page_2,#page_3,#page_4,#page_5").addClass("grid_container");   
+        $("#content_container").append($("#footercontent"));
+        $("#foot_container").append($("#custom_footer"));
+     });  
+// END MOVE 
+// BEGIN CHANGE TEXT
+    $(document).ready(function() {
+        $("#p2282444").text("Recent Projects");
+        $(".indexlink").text("Recent Projects");
+        $(".electronicmail").text("sean@zilifone.net");
+    });
+// END CHANGE 
+/* BEGIN WEBFONTS (not using Google, maybe someday.)
+    WebFontConfig = {
+        google: { families: [ 'Open+Sans:400italic,400,600:latin' ] }
+    };
+    (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })(); 
+*/
+// END WEBFONTS
+// BEGIN GA (I'd like to know who you are)
+    var AnalyticsID = 'UA-336608-22';
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', AnalyticsID]);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    
+    $(document).bind("projectLoadStart", function(e, pid, href){
+       _gaq.push(['_trackPageview','/project/'+href[1]]);
+    });
+// END GA
+// BEGIN KEY SHORTCUTS (let's get usable, also j/k don't seem to make sense like arrows do)    
+    $(document).bind("pageReady", function(e) {
+        shortcut.add("right",function() { $(document).trigger("showNextProject"); },{ 'type':'keydown', 'disable_in_input':true, 'keycode':39 });
+        shortcut.add("left",function() { $(document).trigger("showPrevProject"); },{ 'type':'keydown', 'disable_in_input':true, 'keycode':37 });
+    });
+// END KEY SHORTCUTS 
+</script>
+
+
+
+​
