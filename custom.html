@@ -15,13 +15,13 @@
     W  W     sean[at]zilifone[dot]net
 
 -->
-<div class="cargo_link"><a href="http://www.zilifone.net/?fr=cargo" target="_blank">Zilifone</a> | <a href="http://seanwittmeyer.com/photos#/catch_ref/id=cargo" target="_blank">Photos</a> | <a href="https://mail.zilifone.net/" target="_blank">Mail</a> </div>
+<!--<div class="cargo_link"><a href="http://www.zilifone.net/?fr=cargo" target="_blank">Zilifone</a> | <a href="http://seanwittmeyer.com/photos#/catch_ref/id=cargo" target="_blank">Photos</a> | <a href="https://mail.zilifone.net/" target="_blank">Mail</a> </div>-->
 <div id="hideme">
+    <img src="http://cdn.zilifone.net/seanwittmeyer/img/swlogo.png" width="0" height="0" />
     <div id="custom_headername" class="page_link"><a href="/" class="colordark">Sean Gordon Wittmeyer</a></div>
     <div id="custom_headerroles" class="page_link"><a href="/">User Interface + Web + Product Design</a></div>
     <div id="custom_blanka" class="page_link">&nbsp;</div>
     <div id="custom_blankb" class="page_link">&nbsp;</div>
-    <h1 id="hero">Hi there! I'm Sean Wittmeyer, a designer who believes that we can make our world better through good design.</h1>
     <div id="footercontent">
         <div class="hrline"></div>
         <div class="entry">
@@ -34,12 +34,15 @@
     <div id="custom_footer">
         <div><span class="colordark">Sean Gordon Wittmeyer</span><br />User Interface + Web + Product Design</div>
         <div><span class="colordark">Let's Connect</span><br />I can be found all over the interwebs. <a href="http://twitter.com/seanwittmeyer">Twitter</a>, <a href="http://dribbble.com/seanwittmeyer">Dribbble</a>, <a href="http://github.com/seanwittmeyer">GitHub</a>, <a href="http://cowbird.com/author/sean">Cowbird</a> and <a href="http://flickr.com/seanwittmeyer">Flickr</a><br /><br />You can also just take the direct approach and <a href="">contact me</a>.</div>
-        <div><span class="colordark">Colophon</span><br />This site is powered by <a href="http://cargocollective.com/">Cargo</a> and an occasional pastrami sandwich. I modified the Kennedy theme to match my design.</div>
+        <div><span class="colordark">Colophon</span><br />This site is powered by <a href="http://cargocollective.com/">Cargo</a> and the occasional pastrami sandwich. The theme is a modified version of the kennedy theme.</div>
 
         <div class="clear"></div>
     </div>
+    <div class="nextprev">
+        <a onclick="$(document).trigger('showNextProject');"> Next Project &rarr;</a>
+        <a onclick="$(document).trigger('showPrevProject');"> Previous Project &larr;</a>
+    </div>
 </div>
-
 <script type="text/javascript">
 // BEGIN MOVE CUSTOM CONTENT 
     $(document).ready(function() {  
@@ -48,7 +51,7 @@
         $("#menu_2285738").before($("#custom_blanka"));     
         $("#menu_4063454").before($("#custom_blankb"));     
         $("#p2285738").before($("#p2285731")).before(' &amp; ');
-        $("#content_container").before($("h1#hero"));     
+        //$("#content_container").before($("h1#hero"));     
         $("#page_1,#page_2,#page_3,#page_4,#page_5").addClass("grid_container");   
         $("#content_container").append($("#footercontent"));
         $("#foot_container").append($("#custom_footer"));
@@ -61,7 +64,25 @@
         $(".electronicmail").text("sean@zilifone.net");
     });
 // END CHANGE 
-/* BEGIN WEBFONTS (not using Google, maybe someday.)
+// BEGIN ON PROJECTLOAD COMPLETE
+$(document).bind("projectLoadComplete", function(e, pid){
+    var nplinks = "<div class='nextprev'><a class='goleft'>&larr;</a> | <a class='goright'>&rarr; Next</a></div>"; 
+    $(".nextprev").detach();
+    $('.custompt').append(nplinks);
+    $(".goleft").click(function(){
+        $(document).trigger("showPrevProject");
+    });   
+    $(".goright").click(function(){
+        $(document).trigger("showNextProject");
+    });    
+    $(".next_page").attr("onclick",""); // remove the pagination function
+    $(".prev_page").attr("onclick",""); // remove the pagination function
+    $(".next_page").click(function() { changePage((parseInt($("#current_page").val())+1),$("#limit").val()); });
+    $(".prev_page").click(function() { changePage((parseInt($("#current_page").val())-1),$("#limit").val()); });
+
+});
+// END LOAD 
+    /* BEGIN WEBFONTS (not using Google, maybe someday.)
     WebFontConfig = {
         google: { families: [ 'Open+Sans:400italic,400,600:latin' ] }
     };
